@@ -1,0 +1,247 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Thực hành CSS - Flex-wrap</title>
+
+    <style>
+        /* Thiết lập chung cho trang */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 30px;
+        }
+
+        /* Tiêu đề */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        /* Khu vực các nút */
+        .buttons {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 6px;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        /* Khung Flex Container */
+        .container {
+            display: flex;
+
+            /* Giá trị mặc định ban đầu */
+            flex-wrap: wrap;
+
+            width: 600px;
+            height: 300px;
+
+            gap: 10px;
+
+            margin: 0 auto;
+
+            padding: 10px;
+
+            border: 3px solid #333;
+
+            background-color: white;
+
+            box-sizing: border-box;
+
+            overflow: auto;
+        }
+
+        /* Các Flex Items */
+        .item {
+            width: 180px;
+            height: 80px;
+
+            padding: 20px;
+
+            box-sizing: border-box;
+
+            background-color: lightblue;
+
+            border: 2px solid #333;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Hiển thị giá trị flex-wrap hiện tại */
+        .current-value {
+            text-align: center;
+            margin-top: 20px;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            color: #333;
+        }
+
+        /* Phần giải thích */
+        .explanation {
+            width: 600px;
+
+            margin: 25px auto 0;
+
+            padding: 20px;
+
+            background-color: white;
+
+            border: 1px solid #ccc;
+
+            box-sizing: border-box;
+
+            line-height: 1.6;
+        }
+
+        .explanation h2 {
+            margin-top: 0;
+        }
+
+        /* Responsive cho màn hình nhỏ */
+        @media (max-width: 650px) {
+            .container,
+            .explanation {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Thực hành thuộc tính CSS Flex-wrap</h1>
+
+    <p class="description">
+        Nhấn các nút bên dưới để quan sát sự thay đổi của Flex Items.
+    </p>
+
+    <!-- Các nút thay đổi flex-wrap -->
+    <div class="buttons">
+
+        <button onclick="changeWrap('nowrap')">
+            nowrap
+        </button>
+
+        <button onclick="changeWrap('wrap')">
+            wrap
+        </button>
+
+        <button onclick="changeWrap('wrap-reverse')">
+            wrap-reverse
+        </button>
+
+        <button onclick="changeWrap('initial')">
+            initial
+        </button>
+
+    </div>
+
+    <!-- Flex Container -->
+    <div class="container" id="container">
+
+        <div class="item">Item 1</div>
+        <div class="item">Item 2</div>
+        <div class="item">Item 3</div>
+        <div class="item">Item 4</div>
+        <div class="item">Item 5</div>
+        <div class="item">Item 6</div>
+
+    </div>
+
+    <!-- Hiển thị giá trị hiện tại -->
+    <div class="current-value">
+        flex-wrap hiện tại:
+        <span id="value">wrap</span>
+    </div>
+
+    <!-- Phần giải thích -->
+    <div class="explanation">
+
+        <h2>Giải thích</h2>
+
+        <p>
+            Thuộc tính <strong>flex-wrap</strong> xác định các Flex Items
+            có được phép xuống dòng khi không đủ không gian hay không.
+        </p>
+
+        <ul>
+            <li>
+                <strong>nowrap:</strong>
+                Các Item không xuống dòng.
+            </li>
+
+            <li>
+                <strong>wrap:</strong>
+                Các Item được phép xuống dòng.
+            </li>
+
+            <li>
+                <strong>wrap-reverse:</strong>
+                Các Item được phép xuống dòng và hướng của Cross Axis
+                bị đảo ngược.
+            </li>
+
+            <li>
+                <strong>initial:</strong>
+                Đưa flex-wrap về giá trị mặc định là
+                <strong>nowrap</strong>.
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        // Lấy Flex Container
+        const container = document.getElementById("container");
+
+        // Lấy phần hiển thị giá trị
+        const value = document.getElementById("value");
+
+        // Hàm thay đổi flex-wrap
+        function changeWrap(wrapValue) {
+
+            // Thay đổi thuộc tính flex-wrap
+            container.style.flexWrap = wrapValue;
+
+            // Nếu chọn initial thì giá trị thực tế trở về nowrap
+            if (wrapValue === "initial") {
+                value.textContent = "initial → nowrap";
+            } else {
+                value.textContent = wrapValue;
+            }
+        }
+    </script>
+
+</body>
+</html>
+```
